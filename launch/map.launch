@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <launch>
-    <node pkg="map_server" type="map_server" name="map_server" args="/home/sonn/my_workspace/src/maps/nakano/nakano_11f.yaml" />
+    <node pkg="map_server" type="map_server" name="map_server" args="<YOUR MAP PATH>" />
 </launch>
