@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+	<arg name="map" />
+    <!-- whill-robort -->
+    <include file="$(find ros_whill)/launch/ros_whill.launch" />
+
+    <!-- LRF (urg_node) -->
+    <include file="$(find whill_navigation)/launch/urg_node.launch" />
+
+    <!-- tf -->
+    <node pkg="broadcaster" type="laser_tf_broadcaster" name="inverted_laser_tf_broadcaster" />
+
+    <!-- map server -->
+    <include file="$(find whill_navigation)/launch/map.launch" />
+
+    <!-- amcl (localization) -->
+    <include file="$(find amcl)/examples/amcl_diff.launch" />
+
+    <!-- move base -->
+    <include file="$(find whill_navigation)/launch/move_base.launch" />
+
+    <!-- goal queue -->
+    <node pkg="goal_queue" type="goal_queue" name="goal_queue" output="screen">
+        <remap from="/goal_queue/goal" to="/goal" />
+        <remap from="/goal_queue/interrupt_goal" to="/interrupt_goal" />
+	      <param name="distance" value="0.5" />
+    </node>
+</launch>
+

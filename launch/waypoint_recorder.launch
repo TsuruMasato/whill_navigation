@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+    <!-- LRF (urg_node) -->
+    <include file="$(find whill_navigation)/launch/urg_node.launch" />
+
+    <!-- joy -->
+     <include file="$(find joy_twist)/launch/joy_twist.launch" />
+
+    <!-- tf -->
+    <node pkg="broadcaster" type="laser_tf_broadcaster" name="laser_tf_broadcaster" />
+
+    <!-- map_server -->
+    <include file="$(find whill_navigation)/launch/map.launch" />
+
+    <!-- amcl (localization) -->
+    <include file="$(find amcl)/examples/amcl_diff.launch" />
+
+    <!-- goal_logger -->
+    <node pkg="goal_logger" type="goal_logger" name="goal_logger" output="screen" />
+
+</launch>
+

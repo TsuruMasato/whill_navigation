@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<launch>
+    <!-- LRF (urg_node) -->
+    <include file="$(find icart_navigation)/launch/urg_node.launch" />
+
+    <!-- tf -->
+   <node pkg="broadcaster" type="laser_tf_broadcaster" name="laser_tf_broadcaster" />-->
+
+   <!--   <include file="$(find joy_twist)/launch/joy_twist.launch" />-->
+
+    <!-- gmapping -->
+    <node pkg="gmapping" type="slam_gmapping" name="gmapping" respawn="false" output="screen" />
+</launch>
+
+
+
